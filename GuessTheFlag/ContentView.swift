@@ -26,11 +26,16 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var userScore: Int = 0
     @State private var globalCount: Int = 8
+    
+    @State private var rotationAmount = 0.0
 
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "✅ Correct ✅"
             userScore += 1
+            withAnimation{
+                rotationAmount += 360
+            }
             
         } else {
             scoreTitle = "❌ Incorrect 😅"
@@ -45,6 +50,7 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        rotationAmount = 0
     }
     
     func resetGame(){
@@ -81,6 +87,10 @@ struct ContentView: View {
                             
                         } label: {
                             FlagImage(country: countries[number])
+                                 .rotation3DEffect(
+                                     .degrees(number == correctAnswer ? rotationAmount : 0),
+                                     axis: (x: 0, y: 1, z: 0)
+                                 )
                         }
                     }
                 }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
