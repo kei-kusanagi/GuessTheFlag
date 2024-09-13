@@ -29,6 +29,7 @@ struct ContentView: View {
     
     @State private var rotationAmount = 0.0
     @State private var opacityAmount = 1.0
+    @State private var scaleAmount = 1.0
 
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
@@ -53,6 +54,7 @@ struct ContentView: View {
         correctAnswer = Int.random(in: 0...2)
         rotationAmount = 0
         opacityAmount = 1.0
+        scaleAmount = 1.0
     }
     
     func resetGame(){
@@ -88,6 +90,7 @@ struct ContentView: View {
                             flagTapped(number)
                             withAnimation{
                                 opacityAmount = 0.25
+                                scaleAmount = 0.75
                             }
                             
                         } label: {
@@ -97,12 +100,15 @@ struct ContentView: View {
                                      axis: (x: 0, y: 1, z: 0)
                                  )
                                  .opacity(number == correctAnswer ? 1 : opacityAmount)
+                                 .scaleEffect(number == correctAnswer ? 1.0 : scaleAmount)
+
                         }
                     }
                 }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                     .padding(.vertical, 20)
                     .background(.regularMaterial)
                 .clipShape(.rect(cornerRadius: 20))
+               
                 
                 Spacer()
                 Spacer()
