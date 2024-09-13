@@ -22,3 +22,24 @@ In the end it ended up like this, showing the remaining attempts at all times an
 <p align="center">
   <img src="https://github.com/user-attachments/assets/10c242da-d232-43a1-a8e1-1b9a881f097c" alt="GuessTheFlag (1)" style="max-width: 100%; height: auto;">
 </p>
+
+
+# Challenge 2
+
+- Add a 360-degree rotation to the selected flag: When a flag is tapped, make it rotate 360 degrees along the Y-axis to create a spinning effect.
+
+- Fade out the unselected flags: When a flag is tapped, reduce the opacity of the two unselected flags to 25%, creating a fading effect.
+
+- Add a custom effect to the unselected flags: In addition to fading out, apply another effect to the unselected flags. You can choose to shrink their size or flip them in another direction. Be creative and experiment with the effect.
+
+# Final result challenge 2
+
+Rotation effect: We added a @State variable rotationAmount to control the rotation of the selected flag. Using the .rotation3DEffect modifier, we made the tapped flag rotate 360 degrees around the Y-axis.
+
+Opacity adjustment: We introduced a @State variable opacityAmount to manage the opacity of the unselected flags. With the .opacity modifier, we reduced the opacity of the two flags that were not selected to 25%, making them fade out. We reset the opacity to 100% for the next round in the askQuestion() function.
+
+Scale effect: We implemented a @State variable scaleAmount to shrink the size of the unselected flags when a flag is tapped. We used the .scaleEffect modifier to reduce their size to 75% and reset it to full size for the next round.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3cdd408f-409e-4427-8997-55bc8aad9791" alt="GuessTheFlag (1)" style="max-width: 100%; height: auto;">
+</p>
