@@ -61,7 +61,8 @@ struct ContentView: View {
         userScore = 0
         globalCount = 8
         countries.shuffle()
-        correctAnswer = Int.random(in: 0...2)
+        askQuestion()
+//        correctAnswer = Int.random(in: 0...2)
     }
     
     var body: some View {
